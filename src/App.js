@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Router from './Router'
+import Router from './Router';
 import {withRouter} from 'react-router-dom';
+import {login} from './authService';
 
 class App extends Component {
 
@@ -9,17 +10,26 @@ class App extends Component {
     super();
     this.state = {
       user: {
-        username: "David",
-        email: "crusedmoss@gmail.com",
+        username: '',
+        email: '',
         loggedIn: false
       }
     }
   }
 
-  handleLogin = () => {
-    let {user} = this.state;
-    user.loggedIn = !user.loggedIn;
+  handleLogin = (e) => {
+    e.preventDefault();
+    console.log('Logging in.....')
+    console.log(this.state.user);
+    login(this.state.user, this.props.history)
+  }
+
+  handleChange = (e) => {
+    const {user} = this.state;
+    let field = e.target.name;
+    user[field] = e.target.files ? e.target.files[0] : e.target.value;
     this.setState({user})
+    //console.log(this.state.user);
   }
 
   handleRedirect = () => {
@@ -27,13 +37,15 @@ class App extends Component {
   }
 
   render() {
-    console.log("appjs", this.props);
+    //console.log("appjs", this.props);
     return (
       <div className="App">
+        {/*
         <nav>
             <button onClick={this.handleRedirect}>{this.state.user.loggedIn ? this.state.user.username: "login"}</button>
         </nav>
-        <Router state={this.state} handleLogin={this.handleLogin} />
+        */}
+        <Router state={this.state} handleLogin={this.handleLogin} handleChange={this.handleChange} />
       </div>
     );
   }
