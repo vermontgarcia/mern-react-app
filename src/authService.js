@@ -9,30 +9,35 @@ export const signup = (user, history) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       alert(res.data.msg);
-      console.log(res)
-      history.push('/profile')
+      //console.log(res)
+      history.push('/')
     })
     .catch((err) => {
-      console.log('Error Signup =====> ', err.response);
+      //console.log('Error Signup =====> ', err.response);
+      alert(err.response.data.msg);
     })
 }
 
 export const login = (user, history) => {
   //console.log('User =====>', user)
-
-  console.log(base_url)
   axios.post(`${base_url}/auth/login`, user)
     .then(res => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       alert(res.data.msg);
       //console.log(res.data.user)
-      history.push('/profile')
+      history.push('/')
     })
     .catch(err => {
-      console.log('Error Login =====> ', err.response);
+      //console.log('Error Login =====> ', err.response);
       alert(err.response.data.msg);
     });
+}
+
+export const logout = (history) => {
+  //console.log('Logging out......')
+  localStorage.clear();
+  history.push('/login');
 }
 
 
@@ -44,6 +49,26 @@ export const upload = (user) => {
   return axios.patch(`${base_url}/auth/upload`, formData)
 }
 
-export const isLoggedIn = (user, history) => {
-  
+export const isLoggedIn = (history) => {
+  //console.log('Verifying token.....')
+
+  const token = localStorage.getItem('token');
+
+  //console.log(user)
+
+  axios.get(`${base_url}/auth/loggedin`, {
+    headers: {
+      'x-access-token': token
+    }
+  })
+    .then(res => {
+      //console.log('Valid token', res.data);
+      //alert(res.data.msg)
+      
+    })
+    .catch(err => {
+      //console.log('Invalid token', err.response.data.msg);
+      alert(err.response.data.msg)
+      history.push('/login')
+    });  
 }
