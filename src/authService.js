@@ -69,6 +69,7 @@ export const isLoggedIn = (history) => {
     .catch(err => {
       //console.log('Invalid token', err.response.data.msg);
       alert(err.response.data.msg)
+      localStorage.clear();
       history.push('/login')
     });  
 }
