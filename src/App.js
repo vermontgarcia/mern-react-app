@@ -11,11 +11,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      user: {
-        username: '',
-        email: '',
-        loggedIn: false
-      }
+      user: {}
     }
   }
 
@@ -48,6 +44,13 @@ class App extends Component {
   handleRedirect = () => {
     this.props.history.push('/login');
   }
+
+  componentWillMount(){
+    const user = JSON.parse(localStorage.getItem('user'))
+    user ? this.setState({user}) : this.props.history.push('/login');
+  }
+
+
 
   render() {
     //console.log("appjs", this.props);
