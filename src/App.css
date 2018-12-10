@@ -18,6 +18,11 @@
   color: white;
 }
 
+.profile-picture{
+  width: 100px;
+  border-radius: 50%;
+}
+
 .App-link {
   color: #61dafb;
 }
