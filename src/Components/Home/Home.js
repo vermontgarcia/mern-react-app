@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {isLoggedIn} from '../../authService'
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
   constructor(){
@@ -8,12 +10,15 @@ class Home extends Component {
     }
   }
 
-  componentWillMount (){
+  componentWillMount(){
+
+    const token = localStorage.getItem('token');
+    token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
   }
 
   render(){
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div>
 
@@ -24,6 +29,10 @@ class Home extends Component {
         */}
 
         <h1>Home</h1>
+
+        <Link to='/profile'>Profile</Link>
+
+        <p onClick={this.props.handleLogout}>Logout</p>
 
 
       </div>
