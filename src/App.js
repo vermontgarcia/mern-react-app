@@ -3,6 +3,8 @@ import './App.css';
 import Router from './Router';
 import {withRouter} from 'react-router-dom';
 import {login} from './authService';
+import {logout} from './authService';
+import {signup} from './authService';
 
 class App extends Component {
 
@@ -19,9 +21,20 @@ class App extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log('Logging in.....')
-    console.log(this.state.user);
+    //console.log('Logging in.....')
+    //console.log(this.state.user);
     login(this.state.user, this.props.history)
+  }
+  
+  handleSignup = (e) => {
+    e.preventDefault();
+    console.log('Signing up.....')
+    //console.log(this.state.user);
+    signup(this.state.user, this.props.history)
+  }
+
+  handleLogout = () => {
+    logout(this.props.history)
   }
 
   handleChange = (e) => {
@@ -45,7 +58,13 @@ class App extends Component {
             <button onClick={this.handleRedirect}>{this.state.user.loggedIn ? this.state.user.username: "login"}</button>
         </nav>
         */}
-        <Router state={this.state} handleLogin={this.handleLogin} handleChange={this.handleChange} />
+        <Router 
+          state={this.state}
+          handleLogin={this.handleLogin}
+          handleLogout={this.handleLogout}
+          handleSignup={this.handleSignup}
+          handleChange={this.handleChange}
+        />
       </div>
     );
   }
