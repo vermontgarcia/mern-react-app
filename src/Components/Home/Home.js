@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService'
+import {searchProduct} from '../../service'
 import {Link} from 'react-router-dom';
+import InputField from '../Common/InputField';
 
 class Home extends Component {
   constructor(){
     super();
     this.state = {
-
+      search: {}
     }
   }
 
@@ -15,6 +17,13 @@ class Home extends Component {
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
+  }
+
+  handleChange = (e) => {
+    const {search} = this.state;
+    search.product = e.target.value;
+    this.setState({search})
+    searchProduct(search);
   }
 
   render(){
@@ -31,6 +40,8 @@ class Home extends Component {
         <h1>Home</h1>
 
         <Link to='/profile'>Profile</Link>
+
+        <InputField name='search' placeholder='Search' handleChange={this.handleChange} />
 
         <p onClick={this.props.handleLogout}>Logout</p>
 
