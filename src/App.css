@@ -18,9 +18,66 @@
   color: white;
 }
 
+.nav{
+  /*
+  position: fixed;
+  
+  top: 0;
+  
+  width: 100%;
+  */
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(9, 112, 116);
+  color: white;
+  
+}
+
+.nav a{
+  text-decoration: none;
+  color: aqua;
+}
+
+.nav-profile-picture{
+  height: 30px;
+  border-radius: 50%;
+}
+
 .profile-picture{
   width: 100px;
   border-radius: 50%;
+}
+
+.profile-data,
+.form-envelop{
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.label{
+  display: grid;
+  text-align: justify;
+}
+
+.input,
+.data{
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  margin: 3px 0;
+}
+
+.home-envelop{
+  max-width: 90vw;
+  margin: auto;
+}
+
+.button-envelop{
+  margin-top: 2em;
 }
 
 .App-link {
