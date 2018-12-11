@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService'
 import {searchProduct} from '../../service'
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import InputField from '../Common/InputField';
+import Nav from '../Nav/Nav';
 
 class Home extends Component {
   constructor(){
@@ -17,6 +18,10 @@ class Home extends Component {
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
+    let {user} = this.props.state;
+    user = JSON.parse(localStorage.getItem('user'))
+    //user ? this.setState({user}) : this.props.history.push('/login');
+    this.setState({user})
   }
 
   handleChange = (e) => {
@@ -28,8 +33,10 @@ class Home extends Component {
 
   render(){
     //console.log(this.props);
+    const {user} = this.state
     return (
       <div>
+        <Nav user={user} />
 
         {/*
         <h1>Home {this.props.state ? this.props.state.user.username : null}</h1>
@@ -37,13 +44,13 @@ class Home extends Component {
                 <button onClick={this.props.handleLogin}>Login</button>
         */}
 
-        <h1>Home</h1>
-
-        <Link to='/profile'>Profile</Link>
-
-        <InputField name='search' placeholder='Search' handleChange={this.handleChange} />
-
-        <p onClick={this.props.handleLogout}>Logout</p>
+        <div>
+          <h1>Home</h1>
+        </div>
+        <div className='home-envelop'>
+          <InputField name='search' placeholder='Search' handleChange={this.handleChange} />
+          <p onClick={this.props.handleLogout}>Logout</p>
+        </div>
 
 
       </div>

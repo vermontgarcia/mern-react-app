@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
 import ProfileField from './ProfileField';
+import Nav from '../Nav/Nav';
 
 class Profile extends Component {
 
@@ -36,11 +37,12 @@ class Profile extends Component {
     const {user} = this.props.state
     return(
       <div>
+        <Nav user={user}/>
         <div>
           <h1>Profile</h1>
         </div>
 
-        <div>
+        <div className='profile-data'>
           <img className='profile-picture' src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} alt={user.name} />
           <ProfileField title='Name' name={user.name} />
           <ProfileField title='Email' name={user.email} />
