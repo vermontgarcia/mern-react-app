@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+let debug = true
+
 const base_url = 'http://localhost:3500/api';
 
+if (!debug){
+  
+  const base_url = '/api';
+
+}
 
 export const searchProduct = (search) => {
   console.log('Service',search)
