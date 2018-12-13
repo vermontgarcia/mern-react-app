@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //const base_url = 'http://localhost:3500/api';
-const base_url = window.location.host === 'http://localhost:3000' ? 'http://localhost:3500/api' : 'https://compare-it-mern.herokuapp.com/api';
+const base_url = window.location.hostname === 'localhost' ? 'http://localhost:3500/api' : 'https://compare-it-mern.herokuapp.com/api';
 
 
 export const signup = (user, history) => {
@@ -32,7 +32,7 @@ export const login = (user, history) => {
     })
     .catch(err => {
       //console.log('Error Login =====> ', err.response);
-      alert(err.response.data.msg);
+      err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
     });
 }
 
