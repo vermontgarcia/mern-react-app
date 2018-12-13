@@ -4,11 +4,12 @@ import axios from 'axios';
 //const base_url = 'http://localhost:3500/api';
 
 
-const base_url = window.location.host === 'http://localhost:3000' ? 'http://localhost:3500/api' : '/api';
+const base_url = window.location.host === 'localhost:3000' ? 'http://localhost:3500/api' : '/api';
 
 
 export const searchProduct = (search) => {
   console.log('Service',search)
+  console.log('URL =====> ', base_url);
   axios.get(`${base_url}/search/${search.product}`)
     .then(res => {
       console.log('Search Data =====>', res.data.msg)
