@@ -45,6 +45,10 @@
   border-radius: 50%;
 }
 
+.nav-logo{
+  height: 30px;
+}
+
 .profile-picture{
   width: 100px;
   border-radius: 50%;
@@ -69,6 +73,10 @@
   border-radius: 5px;
   border: 1px solid grey;
   margin: 3px 0;
+}
+
+.input-search{
+  border-radius: 20px;
 }
 
 .home-envelop{

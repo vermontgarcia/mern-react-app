@@ -50,7 +50,7 @@ class Home extends Component {
           <h1>Home</h1>
         </div>
         <div className='home-envelop'>
-          <InputField name='search' placeholder='Search' handleChange={this.handleChange} />
+          <InputField name='search' className='input-search input' placeholder='Search' handleChange={this.handleChange} />
           <p onClick={this.props.handleLogout}>Logout</p>
         </div>
 

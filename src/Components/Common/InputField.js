@@ -1,10 +1,10 @@
 import React from 'react';
 
-const InputField = ({handleChange, title, type, name, placeholder, autofocus}) => (
+const InputField = ({handleChange, title, type, name, placeholder, autofocus, className}) => (
   <div className='form-field-envelop'>
     <label className='label'>
       {title}
-      <input className='input'
+      <input className={className}
         type={type}
         name={name}
         placeholder={placeholder}
