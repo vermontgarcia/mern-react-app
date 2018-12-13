@@ -8,10 +8,11 @@ import NotFound from './404';
 
 
 
-const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup}) => (
+const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup, handleSetState}) => (
   <Switch>
     <Route exact path='/' render={(props) => (
       <Home
+        handleSetState={handleSetState}
         handleLogout={handleLogout}
         state={state}
         {...props}
@@ -33,6 +34,7 @@ const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup}) 
     />
     <Route exact path='/profile' render={(props) => (
       <Profile
+        handleSetState={handleSetState}
         handleLogout={handleLogout}
         state={state}
         {...props}

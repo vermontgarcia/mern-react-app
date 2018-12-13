@@ -11,7 +11,7 @@ class Login extends Component {
   //}
 
   componentWillMount (){
-
+    console.log("login", this.props)
   }
 
   render(){

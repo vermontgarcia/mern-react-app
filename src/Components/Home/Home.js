@@ -18,10 +18,12 @@ class Home extends Component {
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
-    let {user} = this.props.state;
-    user = JSON.parse(localStorage.getItem('user'))
-    //user ? this.setState({user}) : this.props.history.push('/login');
-    this.setState({user})
+    this.props.handleSetState()
+
+    //let {user} = this.props.state;
+    //user = JSON.parse(localStorage.getItem('user'))
+    ////user ? this.setState({user}) : this.props.history.push('/login');
+    //this.setState({user})
   }
 
   handleChange = (e) => {
@@ -33,7 +35,7 @@ class Home extends Component {
 
   render(){
     //console.log(this.props);
-    const {user} = this.state
+    const {user} = this.props.state
     return (
       <div>
         <Nav user={user} />

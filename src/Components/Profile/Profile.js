@@ -18,6 +18,8 @@ class Profile extends Component {
 
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login')
 
+    this.props.handleSetState()
+
 
     /*
     if (token){
@@ -35,6 +37,7 @@ class Profile extends Component {
   render(){
     console.log(this.props)
     const {user} = this.props.state
+    console.log("user",user)
     return(
       <div>
         <Nav user={user}/>
