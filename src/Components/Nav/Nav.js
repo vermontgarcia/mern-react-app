@@ -11,7 +11,7 @@ class Nav extends Component {
           Menu
         </div>
         <div>
-          App logo
+          <NavLink to='/'><img className='nav-logo' src='/search.png' alt='Logo' /></NavLink>
         </div>
         <div>
           {user ? <NavLink to='/profile'><img className='nav-profile-picture' alt={user.name} src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} /></NavLink> : null}
