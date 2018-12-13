@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import {login} from './authService';
 import {logout} from './authService';
 import {signup} from './authService';
-import Nav from './Components/Nav/Nav';
+//import Nav from './Components/Nav/Nav';
 
 class App extends Component {
 
