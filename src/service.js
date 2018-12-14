@@ -10,7 +10,8 @@ const base_url = window.location.hostname === 'localhost' ? 'http://localhost:35
 export const searchProduct = (search) => {
   console.log('Service',search)
   console.log('URL =====> ', base_url);
-  axios.get(`${base_url}/search/${search.product}`)
+  return axios.get(`${base_url}/search/${search.product}`)
+    /*
     .then(res => {
       console.log('Search Data =====>', res.data.msg)
       //alert(res.data.msg);
@@ -19,6 +20,7 @@ export const searchProduct = (search) => {
     })
     .catch((err) => {
       //console.log('Error Signup =====> ', err.response);
-      alert(err.response.data.msg);
+      err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
     })
+    */
 }
