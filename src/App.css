@@ -88,6 +88,15 @@
   margin-top: 2em;
 }
 
+.item-envelop{
+  display: flex;
+  flex-direction: row;
+}
+
+.item-img{
+  height: 50px;
+}
+
 .App-link {
   color: #61dafb;
 }
