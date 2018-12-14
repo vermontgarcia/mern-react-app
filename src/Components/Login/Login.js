@@ -24,8 +24,8 @@ class Login extends Component {
         <div className='form-envelop'>
           <form onSubmit={this.props.handleLogin}>
             <div className='fields-envelop'>
-              <InputField title='Email:' type='email' name='email' placeholder='user@copareit.com' handleChange={this.props.handleChange} autofocus='autofocus' />
-              <InputField title='Password:' type='password' name='password' placeholder='Your password' handleChange={this.props.handleChange} />
+              <InputField className='input' title='Email:' type='email' name='email' placeholder='user@copareit.com' handleChange={this.props.handleChange} autofocus='autofocus' />
+              <InputField className='input' title='Password:' type='password' name='password' placeholder='Your password' handleChange={this.props.handleChange} />
             </div>
             <div className='button-envelop'>
               <FormButton className='form-button button' type='submit' name='Log in' />

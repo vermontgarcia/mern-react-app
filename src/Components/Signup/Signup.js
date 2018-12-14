@@ -13,10 +13,10 @@ class Signup extends Component {
         <div className='form-envelop'>
           <form onSubmit={this.props.handleSignup}>
             <div className='fields-envelop'>
-              <InputField title='Name:' type='text' name='name' placeholder='What is your name?' handleChange={this.props.handleChange} autofocus='autofocus' />
-              <InputField title='Email:' type='email' name='email' placeholder='user@copareit.com' handleChange={this.props.handleChange} />
-              <InputField title='Password:' type='password' name='password' placeholder='Your password' handleChange={this.props.handleChange} />
-              <InputField title='Confirm Password:' type='password' name='confirmPassword' placeholder='Same password' handleChange={this.props.handleChange} />
+              <InputField className='input' title='Name:' type='text' name='name' placeholder='What is your name?' handleChange={this.props.handleChange} autofocus='autofocus' />
+              <InputField className='input' title='Email:' type='email' name='email' placeholder='user@copareit.com' handleChange={this.props.handleChange} />
+              <InputField className='input' title='Password:' type='password' name='password' placeholder='Your password' handleChange={this.props.handleChange} />
+              <InputField className='input' title='Confirm Password:' type='password' name='confirmPassword' placeholder='Same password' handleChange={this.props.handleChange} />
             </div>
             <div className='button-envelop'>
               <FormButton className='form-button button' type='submit' name='Sign up' />
