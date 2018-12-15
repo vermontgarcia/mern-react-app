@@ -41,13 +41,8 @@ class Home extends Component {
     searchProduct(search)
       .then(res => {
         console.log('Search Data =====>', res.data.msg)
-        console.log('Items =====>', res.data.items)
         items = res.data.items;
-        console.log('Items before set state =====>', items)
         this.setState({items})
-        //alert(res.data.msg);
-        //console.log(res)
-        //history.push('/')
         console.log('Items from state =====>', this.state.items)
       })
       .catch((err) => {
@@ -80,9 +75,7 @@ class Home extends Component {
         <div className='home-envelop'>
           <InputField name='search' className='input-search input' placeholder='Search' handleChange={this.handleChange} />
           <span onClick={this.handleSearch}>Search</span>
-          <ul>
             {items ? items.map((item, index) => <Item key={index} {...item} />) : null}
-          </ul>
           <p onClick={this.props.handleLogout}>Logout</p>
         </div>
 
