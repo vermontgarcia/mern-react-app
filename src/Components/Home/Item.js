@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Item = ({image, name, price}) => (
-    <li className='item-envelop'>
+const Item = ({market, image, name, price}) => (
+    <div className='item-envelop'>
+        <p>{market}</p>
         <img className='item-img' alt={name} src={image}/>
         <p> {name}</p>
         <p> {price}</p>
-    </li>
+    </div>
 );
 
 export default Item;
