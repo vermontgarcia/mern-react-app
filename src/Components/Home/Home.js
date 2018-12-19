@@ -20,6 +20,9 @@ class Home extends Component {
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
+    const items = JSON.parse(localStorage.getItem('items'))
+    items ? this.setState({items}) : console.log('No items found');  
+
     this.props.handleSetState()
 
     //let {user} = this.props.state;
@@ -42,6 +45,7 @@ class Home extends Component {
       .then(res => {
         console.log('Search Data =====>', res.data.msg)
         items = res.data.items;
+        localStorage.setItem('items', JSON.stringify(items));
         this.setState({items})
         console.log('Items from state =====>', this.state.items)
       })
