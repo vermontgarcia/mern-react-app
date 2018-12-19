@@ -38,7 +38,8 @@ export const login = (user, history) => {
 
 export const logout = (history) => {
   //console.log('Logging out......')
-  localStorage.clear();
+  //localStorage.clear();
+  localStorage.removeItem('token');
   history.push('/login');
 }
 
@@ -71,7 +72,8 @@ export const isLoggedIn = (history) => {
     .catch(err => {
       //console.log('Invalid token', err.response.data.msg);
       alert(err.response.data.msg)
-      localStorage.clear();
+      //localStorage.clear();
+      localStorage.removeItem('token');
       history.push('/login')
     });  
 }
