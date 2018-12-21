@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import InputField from '../Common/InputField';
-import FormButton from '../Common/FromButton';
 import {Link} from 'react-router-dom';
 
 import {login} from '../../authService';
@@ -16,11 +14,9 @@ const FormItem = Form.Item;
 class LoginForm extends Component {
 
   handleSubmit = (e) => {
-    console.log('PROPS',this.props)
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         login(values, this.props.history)
       }
     });
@@ -59,11 +55,11 @@ class LoginForm extends Component {
           })(
             <Checkbox>Remember me</Checkbox>
           )}
-          <a className="login-form-forgot" href="">Forgot password</a>
+          <Link className="login-form-forgot" to='/forgot'>Forgot password</Link>
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          Don't have an account yet? <Link to='/signup'>register now!</Link>
+          Don't have an account yet? <Link to='/signup'>Register now!</Link>
         </FormItem>
       </Form>
     );
