@@ -73,8 +73,6 @@ class Home extends Component {
                 <button onClick={this.props.handleLogin}>Login</button>
         */}
 
-        <Button type='primary'>Button</Button>
-
         <div>
           <h1>Home</h1>
         </div>
