@@ -6,6 +6,8 @@ import InputField from '../Common/InputField';
 import Nav from '../Nav/Nav';
 import Item from './Item';
 
+import Button from 'antd/lib/button';
+
 class Home extends Component {
   constructor(){
     super();
@@ -72,6 +74,8 @@ class Home extends Component {
         <strong>{this.props.state.user.loggedIn ? this.props.state.user.email: "Usuario no logged"}</strong>
                 <button onClick={this.props.handleLogin}>Login</button>
         */}
+
+        <Button type='primary'>Button</Button>
 
         <div>
           <h1>Home</h1>
