@@ -3,41 +3,77 @@ import InputField from '../Common/InputField';
 import FormButton from '../Common/FromButton';
 import {Link} from 'react-router-dom';
 
-class Login extends Component {
-  //constructor(){
-  //  super();
-  //  this.state = {
-  //  }
-  //}
+import {login} from '../../authService';
 
-  componentWillMount (){
-    console.log("login", this.props)
+import Form from 'antd/lib/form';
+import Icon from 'antd/lib/icon';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Checkbox from 'antd/lib/checkbox';
+
+const FormItem = Form.Item;
+
+class LoginForm extends Component {
+
+  handleSubmit = (e) => {
+    console.log('PROPS',this.props)
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+        let user = {
+          email: values.userName,
+          password: values.password
+        }
+        login(user, this.props.history)
+      }
+    });
   }
-
-  render(){
-    //console.log(this.props);
+  
+  render() {
+    const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <Form onSubmit={this.handleSubmit} className="form-envelop">
         <div>
           <h1>Login</h1>
         </div>
-        <div className='form-envelop'>
-          <form onSubmit={this.props.handleLogin}>
-            <div className='fields-envelop'>
-              <InputField className='input' title='Email:' type='email' name='email' placeholder='user@copareit.com' handleChange={this.props.handleChange} autofocus='autofocus' />
-              <InputField className='input' title='Password:' type='password' name='password' placeholder='Your password' handleChange={this.props.handleChange} />
-            </div>
-            <div className='button-envelop'>
-              <FormButton className='form-button button' type='submit' name='Log in' />
-            </div>
-          </form>
-        </div>
-        <div>
-          <p>Don't have an account yet? <span><Link to='/signup' >Register</Link></span></p>
-        </div>
-      </div>
-    )
+        <FormItem>
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please type your email!' }],
+          })(
+            <Input
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="user@compareit.com"/>
+          )}
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: 'Please type your Password!' }],
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Your password"/>
+          )}
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true,
+          })(
+            <Checkbox>Remember me</Checkbox>
+          )}
+          <a className="login-form-forgot" href="">Forgot password</a>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
+          Don't have an account yet? <Link to='/signup'>register now!</Link>
+        </FormItem>
+      </Form>
+    );
   }
 }
+
+const Login = Form.create()(LoginForm);
 
 export default Login;
