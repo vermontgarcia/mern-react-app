@@ -6,8 +6,6 @@ import InputField from '../Common/InputField';
 import Nav from '../Nav/Nav';
 import Item from './Item';
 
-import Button from 'antd/lib/button';
-
 class Home extends Component {
   constructor(){
     super();
