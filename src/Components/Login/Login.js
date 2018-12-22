@@ -21,7 +21,7 @@ class LoginForm extends Component {
   }
   
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const {getFieldDecorator} = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="form-envelop">
         <div>
