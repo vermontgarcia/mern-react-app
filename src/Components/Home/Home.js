@@ -6,6 +6,8 @@ import InputField from '../Common/InputField';
 import Nav from '../Nav/Nav';
 import Item from './Item';
 
+import {Skeleton} from 'antd';
+
 class Home extends Component {
   constructor(){
     super();
@@ -79,7 +81,8 @@ class Home extends Component {
         <div className='home-envelop'>
           <InputField name='search' className='input-search input' placeholder='Search' handleChange={this.handleChange} />
           <span onClick={this.handleSearch}>Search</span>
-            {items ? items.map((item, index) => <Item key={index} {...item} />) : null}
+          <Skeleton active/>
+          {items ? items.map((item, index) => <Item key={index} {...item} />) : null}
           <p onClick={this.props.handleLogout}>Logout</p>
         </div>
 
@@ -88,6 +91,7 @@ class Home extends Component {
     )
   }
 }
+//import { from } from 'rxjs';
 
 export default Home;
 
