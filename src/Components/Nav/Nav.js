@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Icon} from 'antd';
+import {Avatar} from 'antd';
 
 class Nav extends Component {
   render(){
@@ -8,13 +9,13 @@ class Nav extends Component {
     return (
       <nav className='nav'>
         <div>
-          <Icon type='menu' style={{ fontSize: '30px'}}/>
+          <Icon type='menu' style={{ fontSize: '20px'}}/>
         </div>
         <div>
-          <NavLink to='/'><img className='nav-logo' src='/search.png' alt='Logo' /></NavLink>
+          <NavLink to='/'><span className='nav-logo'><i class="fas fa-search"></i></span></NavLink>
         </div>
         <div>
-          {user ? <NavLink to='/profile'><img className='nav-profile-picture' alt={user.name} src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} /></NavLink> : null}
+          {user ? <NavLink to='/profile'><Avatar src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} /></NavLink> : null}
         </div>
       </nav>
     )
