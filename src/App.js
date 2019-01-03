@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import Router from './Router';
 import {withRouter} from 'react-router-dom';
 import {login} from './authService';
 import {logout} from './authService';
 import {signup} from './authService';
+import './App.css';
 //import Nav from './Components/Nav/Nav';
 
 class App extends Component {
