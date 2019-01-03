@@ -3,12 +3,12 @@ import {Card, Icon, Avatar} from 'antd';
 
 const {Meta} = Card;
 
-const Item = ({market, image, name, price}) => (
+const Item = ({market, image, name, price, upc}) => (
 
     <Card
         hoverable
         //style={{ width: 200 }}
-        extra={market}
+        extra={`${market} ${upc}`}
         cover={<img alt={name} src={image} />}
         actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
     >
