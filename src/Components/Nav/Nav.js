@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+import {Icon} from 'antd';
 
 class Nav extends Component {
   render(){
-    //console.log('Props =====>', this.props)
     const {user} = this.props
     return (
       <nav className='nav'>
         <div>
-          Menu
+          <Icon type='menu' style={{ fontSize: '30px'}}/>
         </div>
         <div>
           <NavLink to='/'><img className='nav-logo' src='/search.png' alt='Logo' /></NavLink>
