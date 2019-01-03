@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: rgb(9, 112, 116);
   color: white;
   
@@ -55,7 +56,8 @@
 }
 
 .nav-logo{
-  height: 30px;
+  font-size: 25px;
+  color: whitesmoke;
 }
 
 .profile-picture{
@@ -143,6 +145,17 @@
   text-align: center;
 }
 
+#back-top-custom .ant-back-top-inner {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #1088e9;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -151,3 +164,27 @@
     transform: rotate(360deg);
   }
 }
+
+.dark-primary-color    { background: #AFB42B; }
+.default-primary-color { background: #CDDC39; }
+.light-primary-color   { background: #F0F4C3; }
+.text-primary-color    { color: #212121; }
+.accent-color          { background: #FF4081; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+
+
+.primary-color        { color: #AFB42B; }                        
+.link-color           { color: #CDDC39; }                          
+.success-color        { color: #52c41a; }                      
+.warning-color        { color: #faad14; }                     
+.error-color          { color: #f5222d; }                      
+.font-size-base       { color: 14px;}                 
+.heading-color        { color: rgba(33, 33, 33, .85);}              
+.text-color           { color: rgba(33, 33, 33, .65);}                
+.text-color-secondary { color: rgba(33, 33, 33, .45);}    
+.disabled-color       { color: rgba(33, 33, 33, .25);}         
+.border-radius-base   { border-radius: 4px;}     
+.border-color-base    { color: #d9d9d9;}     
+.box-shadow-base      { color: 0 2px 8px rgba(33, 33, 33, .15);}  
