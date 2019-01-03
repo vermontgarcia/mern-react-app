@@ -12,6 +12,7 @@ import {Menu, Icon, Button } from 'antd';
 import {Col, Row} from 'antd';
 import {Input} from 'antd';
 import {Spin} from 'antd';
+import {BackTop} from 'antd';
 
 const {Header, Footer, Sider, Content} = Layout
 const SubMenu = Menu.SubMenu;
@@ -39,8 +40,13 @@ class Home extends Component {
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
-    const items = JSON.parse(localStorage.getItem('items'))
-    items ? this.setState({items}) : console.log('No items found');  
+    if (localStorage.getItem('items') !== undefined){
+      console.log('Yes Items')
+      const items = JSON.parse(localStorage.getItem('items'))
+      items ? this.setState({items}) : console.log('No items found');  
+    } else {
+      console.log('No Items')
+    }
 
     this.props.handleSetState()
 
@@ -58,6 +64,7 @@ class Home extends Component {
   }
   
   handleSearch = (value) => {
+    if (value === '') return;
     let {searching} = this.state;
     searching = true;
     this.setState({searching})
@@ -112,6 +119,11 @@ class Home extends Component {
           </Content>
           <Footer>Footer</Footer>
         </Layout>
+        <div>
+          <BackTop id='back-top-custom'>
+            <div className="ant-back-top-inner"><Icon type="to-top" /></div>
+          </BackTop>
+        </div>
       </div>
     )
   }
