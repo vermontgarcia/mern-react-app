@@ -47,10 +47,10 @@ class Profile extends Component {
 
         <div className='profile-data'>
           <img className='profile-picture' src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} alt={user.name} />
-          <ProfileField title='Name' name={user.name} />
+          <ProfileField title='Nombre' name={user.name} />
           <ProfileField title='Email' name={user.email} />
-          <ProfileField title='Role' name={user.role} />
-          <ProfileField title='Status' name={user.status} />
+          <ProfileField title='Rol' name={user.role} />
+          <ProfileField title='Estado' name={user.status} />
         </div>
 
         <div>
