@@ -8,7 +8,7 @@ const base_url = window.location.hostname === 'localhost' ? 'http://localhost:35
 
 
 export const searchProduct = (search) => {
-  console.log('Service',search)
+  console.log('Service =====>', search)
   console.log('URL =====> ', base_url);
   return axios.get(`${base_url}/search/${search.product}`)
     /*
