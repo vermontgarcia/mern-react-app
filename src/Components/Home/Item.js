@@ -1,12 +1,23 @@
 import React from 'react';
+import {Card, Icon, Avatar} from 'antd';
+
+const {Meta} = Card;
 
 const Item = ({market, image, name, price}) => (
-    <div className='item-envelop'>
-        <p>{market}</p>
-        <img className='item-img' alt={name} src={image}/>
-        <p> {name}</p>
-        <p> {price}</p>
-    </div>
+
+    <Card
+        hoverable
+        //style={{ width: 200 }}
+        extra={market}
+        cover={<img alt={name} src={image} />}
+        actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+    >
+        <Meta
+        //avatar={<Avatar src='"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"' />}
+        title={price}
+        description={name}
+        />
+    </Card>
 );
 
 export default Item;
