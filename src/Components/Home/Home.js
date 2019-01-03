@@ -7,14 +7,31 @@ import Nav from '../Nav/Nav';
 import Item from './Item';
 
 import {Skeleton} from 'antd';
+import {Layout} from 'antd';
+import {Menu, Icon, Button } from 'antd';
+import {Col, Row} from 'antd';
+import {Input} from 'antd';
+import {Spin} from 'antd';
+
+const {Header, Footer, Sider, Content} = Layout
+const SubMenu = Menu.SubMenu;
+const Search = Input.Search;
 
 class Home extends Component {
   constructor(){
     super();
     this.state = {
       search: {},
-      items: []
+      items: [],
+      searching: false,
+      collapsed: false,
     }
+  }
+
+  toggleCollapsed = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
   }
 
   componentWillMount(){
@@ -39,9 +56,13 @@ class Home extends Component {
     search.product = e.target.value;
     this.setState({search})
   }
-
-  handleSearch = (e) => {
+  
+  handleSearch = (value) => {
+    let {searching} = this.state;
+    searching = true;
+    this.setState({searching})
     const {search} = this.state;
+    search.product = value;
     let {items} = this.state;
     searchProduct(search)
       .then(res => {
@@ -49,6 +70,8 @@ class Home extends Component {
         items = res.data.items;
         localStorage.setItem('items', JSON.stringify(items));
         this.setState({items})
+        searching = false;
+        this.setState({searching});
         console.log('Items from state =====>', this.state.items)
       })
       .catch((err) => {
@@ -62,36 +85,37 @@ class Home extends Component {
 
   render(){
     //console.log(this.props);
-    const {user} = this.props.state
-    const {items} = this.state
+    let {searching} = this.state;
+    const {user} = this.props.state;
+    const {items} = this.state;
     console.log('Items initial', items)
     return (
       <div>
-        <Nav user={user} />
-
-        {/*
-        <h1>Home {this.props.state ? this.props.state.user.username : null}</h1>
-        <strong>{this.props.state.user.loggedIn ? this.props.state.user.email: "Usuario no logged"}</strong>
-                <button onClick={this.props.handleLogin}>Login</button>
-        */}
-
-        <div>
-          <h1>Home</h1>
-        </div>
-        <div className='home-envelop'>
-          <InputField name='search' className='input-search input' placeholder='Search' handleChange={this.handleChange} />
-          <span onClick={this.handleSearch}>Search</span>
-          <Skeleton active/>
-          {items ? items.map((item, index) => <Item key={index} {...item} />) : null}
-          <p onClick={this.props.handleLogout}>Logout</p>
-        </div>
-
-
+        <Layout>
+          <Header>
+            <Nav user={user} />
+          </Header>
+          <Content>
+            <div className='home-envelop'>
+              <div className='input-search'>
+                <Search
+                  placeholder='busca un articulo'
+                  onSearch={value => this.handleSearch(value)}
+                />
+              </div>
+              {searching ? <Spin /> : null}
+              <div className='cards-envelop'>
+                {items ? items.map((item, index) => <Item key={index} {...item} />) : <Skeleton active/>}
+              </div>
+              <p onClick={this.props.handleLogout}>Logout</p>
+            </div>
+          </Content>
+          <Footer>Footer</Footer>
+        </Layout>
       </div>
     )
   }
 }
-//import { from } from 'rxjs';
 
 export default Home;
 
