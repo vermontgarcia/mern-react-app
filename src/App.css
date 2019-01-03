@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -18,14 +19,22 @@
   color: white;
 }
 
+*/
+
+.ant-layout-header{
+  padding: 0;
+  height: auto;
+  line-height: inherit;
+}
+
 .nav{
   /*
   position: fixed;
   
   top: 0;
   
-  width: 100%;
   */
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -75,13 +84,14 @@
 }
 
 .input-search{
+  padding: 1em 0;
   border-radius: 20px;
 }
 
 .home-envelop{
-  max-width: 90vw;
+  max-width: 95%;
   margin: auto;
-}
+} 
 
 .button-envelop{
   margin-top: 2em;
@@ -94,6 +104,26 @@
 
 .item-img{
   height: 50px;
+}
+
+.cards-envelop{
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.ant-card{
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.ant-card-meta{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .App-link {
