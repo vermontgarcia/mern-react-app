@@ -21,6 +21,10 @@
 
 */
 
+.mouseHover:hover{
+  cursor: pointer;
+}
+
 .ant-layout-header{
   padding: 0;
   height: auto;
@@ -83,6 +87,7 @@
   border-radius: 5px;
   border: 1px solid grey;
   margin: 3px 0;
+  height: 35px;
 }
 
 .input-search{
@@ -143,6 +148,21 @@
 
 .ant-input {
   text-align: center;
+}
+
+.ant-drawer-wrapper-body{
+  background-color: #212121;
+  color: #BDBDBD;
+  
+}
+
+.ant-drawer-body a{
+  text-decoration: none;
+  color: #BDBDBD;
+}
+
+.ant-drawer-body{
+  font-size: 1.2em;
 }
 
 #back-top-custom .ant-back-top-inner {

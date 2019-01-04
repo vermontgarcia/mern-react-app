@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Home from './Components/Home/Home'
+import Home from './Components/Home/Home';
+import Search from './Components/Search/Search';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import Profile from './Components/Profile/Profile';
@@ -12,6 +13,14 @@ const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup, h
   <Switch>
     <Route exact path='/' render={(props) => (
       <Home
+        handleSetState={handleSetState}
+        handleLogout={handleLogout}
+        state={state}
+        {...props}
+      />)}
+    />
+    <Route exact path='/search' render={(props) => (
+      <Search
         handleSetState={handleSetState}
         handleLogout={handleLogout}
         state={state}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import InputField from '../Common/InputField';
-import FormButton from '../Common/FromButton';
 import {Link} from 'react-router-dom';
+
+import {signup} from '../../authService';
 
 
 import {
@@ -22,6 +22,7 @@ class SignupForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        signup(values, this.props.history)
       }
     });
   }
