@@ -23,6 +23,7 @@
 
 .mouseHover:hover{
   cursor: pointer;
+  color: white;
 }
 
 .ant-layout-header{
@@ -87,7 +88,6 @@
   border-radius: 5px;
   border: 1px solid grey;
   margin: 3px 0;
-  height: 35px;
 }
 
 .input-search{
