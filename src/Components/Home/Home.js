@@ -33,13 +33,13 @@ class Home extends Component {
       <div>
         <Layout>
           <Header>
-            <Nav user={user} />
+            <Nav user={user} handleLogout={this.props.handleLogout} />
           </Header>
           <Content>
             <div className='profile-data'>
             <h1>Bienvenido</h1>
             <img className='profile-picture' src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} alt={user.name} />
-            <div>{user.name}</div>
+            <div>{user.username}</div>
         </div>
           </Content>
           <Footer>Footer</Footer>
