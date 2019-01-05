@@ -111,11 +111,11 @@ class List extends Component {
             <h1>Mi lista</h1>
 
             <div>
-              <p>Superama $ {totalSuperama}</p>
+              <p className='total-list'>Superama ${totalSuperama}</p>
               <Table {...this.state.table} columns={columns} dataSource={this.state.superama} onChange={this.onChange} />
             </div>
             <div>
-              <p>Walmart $ {totalWalmart}</p>
+              <p className='total-list'>Walmart ${totalWalmart}</p>
               <Table {...this.state.table} columns={columns} dataSource={this.state.walmart} onChange={this.onChange} />
             </div>
 

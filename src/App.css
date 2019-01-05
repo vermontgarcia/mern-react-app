@@ -81,6 +81,10 @@
   margin: auto;
 }
 
+.total-list{
+  font-weight: 700;
+}
+
 .label{
   display: grid;
   text-align: justify;
