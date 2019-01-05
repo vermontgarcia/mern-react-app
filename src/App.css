@@ -121,7 +121,8 @@
   border-radius: 20px;
 }
 
-.home-envelop{
+.home-envelop,
+.searches-envelop{
   max-width: 95%;
   margin: auto;
 } 
@@ -139,7 +140,8 @@
   height: 50px;
 }
 
-.cards-envelop{
+.cards-envelop,
+.ant-collapse-content-box{
   display: flex;
   justify-content: center;
   flex-flow: wrap;
