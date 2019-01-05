@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
 import {editUser} from '../../authService'
 import ProfileField from './ProfileField';
+import FooterData from '../Common/FooterData';
 import Nav from '../Nav/Nav';
-import {Button, Spin} from 'antd';
+import {Button, Spin, Layout, Icon, BackTop} from 'antd';
+
+const {Header, Footer, Content} = Layout
 
 class Profile extends Component {
 
@@ -63,29 +66,42 @@ class Profile extends Component {
     //console.log("user",user)
     return(
       <div>
-        <Nav user={user} handleLogout={this.props.handleLogout} />
-
-        <div className='profile-data'>
-          <div>
-            <h1 onClick={this.handleEdit}>Mi perfil</h1>
-            {edit ? <h2>Edit</h2>:null}
-          </div>
-          <div className='picture-box'>
-            <img className='profile-picture' src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} alt={user.name} />
-            <label htmlFor="profile-picture" id='picture-btn' className='ant-btn login-form-button ant-btn-primary'>
-                Edit Photo
-                <input
-                    id='profile-picture'
-                    type='file'
-                    name='profilePicture'
-                    onChange={this.handleEditUser} />
-              </label>
-          </div>
-          {searching ? <Spin /> : null}
-          <ProfileField title='Nombre' name={user.username} />
-          <ProfileField title='Email' name={user.email} />
-          <ProfileField title='Rol' name={user.role} />
-          <ProfileField title='Estado' name={user.status} />
+        <Layout>
+          <Header>
+            <Nav user={user} handleLogout={this.props.handleLogout} />
+          </Header>
+          <Content>
+            <div className='profile-data'>
+              <div>
+                <h1 onClick={this.handleEdit}>Mi perfil</h1>
+                {edit ? <h2>Edit</h2>:null}
+              </div>
+              <div className='picture-box'>
+                <img className='profile-picture' src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} alt={user.name} />
+                <label htmlFor="profile-picture" id='picture-btn' className='ant-btn login-form-button ant-btn-primary'>
+                    Edit Photo
+                    <input
+                        id='profile-picture'
+                        type='file'
+                        name='profilePicture'
+                        onChange={this.handleEditUser} />
+                  </label>
+              </div>
+              {searching ? <Spin /> : null}
+              <ProfileField title='Nombre' name={user.username} />
+              <ProfileField title='Email' name={user.email} />
+              <ProfileField title='Rol' name={user.role} />
+              <ProfileField title='Estado' name={user.status} />
+            </div>
+          </Content>
+              <Footer>
+                <FooterData />
+              </Footer>
+        </Layout>
+        <div>
+          <BackTop id='back-top-custom'>
+            <div className="ant-back-top-inner"><Icon type="to-top" /></div>
+          </BackTop>
         </div>
       </div>
     )

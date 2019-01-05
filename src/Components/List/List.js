@@ -9,6 +9,7 @@ import {
   BackTop,
   Table
 } from 'antd';
+import FooterData from '../Common/FooterData';
 
 const {Header, Footer, Content} = Layout
 
@@ -91,8 +92,6 @@ class List extends Component {
           <img className='image-list' src={record.image} /> {record.name}
         </span>
       ),
-      //defaultSortOrder: 'ascendent',
-      //sorter: (a, b) => b.name - a.name,
     }, {
       title: 'Precio',
       dataIndex: 'price'
@@ -124,7 +123,9 @@ class List extends Component {
             
         </div>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <FooterData />
+          </Footer>
         </Layout>
         <div>
           <BackTop id='back-top-custom'>

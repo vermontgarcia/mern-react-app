@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {Layout} from 'antd';
 import {Icon} from 'antd';
 import {BackTop} from 'antd';
+import FooterData from '../Common/FooterData';
 
 const {Header, Footer, Content} = Layout
 
@@ -68,7 +69,9 @@ class Home extends Component {
             
         </div>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <FooterData />  
+          </Footer>
         </Layout>
         <div>
           <BackTop id='back-top-custom'>
