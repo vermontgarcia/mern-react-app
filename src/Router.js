@@ -5,9 +5,9 @@ import Search from './Components/Search/Search';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import Profile from './Components/Profile/Profile';
+import List from './Components/List/List';
+import Searches from './Components/Searches/Searches';
 import NotFound from './404';
-
-
 
 const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup, handleSetState}) => (
   <Switch>
@@ -49,7 +49,22 @@ const Router = ({state, handleLogin, handleLogout, handleChange, handleSignup, h
         {...props}
       />)}
     />
-    
+    <Route exact path='/mylist' render={(props) => (
+      <List
+        handleSetState={handleSetState}
+        handleLogout={handleLogout}
+        state={state}
+        {...props}
+      />)}
+    />
+    <Route exact path='/mysearches' render={(props) => (
+      <Searches
+        handleSetState={handleSetState}
+        handleLogout={handleLogout}
+        state={state}
+        {...props}
+      />)}
+    />
     <Route path='*' component={NotFound} />
   </Switch>
 )
