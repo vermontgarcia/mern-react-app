@@ -60,7 +60,7 @@ class Nav extends Component {
           <div><Link to='/mylist' ><Icon type="file-done" /> Mi Lista</Link></div>
           <Divider />
           <div><Link to='/profile' ><Icon type="user" /> Mi Perfil</Link></div>
-          <div><Link to='/settings' ><Icon type="setting" /> Ajustes</Link></div>
+          <div><Link to='/' ><Icon type="setting" /> Ajustes</Link></div>
           <Divider />
           <div onClick={this.props.handleLogout} ><Link to=''><Icon type="logout" /> Cerrar Sesión</Link></div>
         </Drawer>
