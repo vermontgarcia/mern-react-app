@@ -10,7 +10,7 @@ module.exports = function override(config, env) {
   config = rewireLess.withLoaderOptions({
 
     modifyVars: {
-      "@primary-color":        "#AFB42B",
+      "@primary-color":        "#CDDC39",
       "@link-color":           "#CDDC39",                     // link color
       "@success-color":        "#52c41a",                     // success state color
       "@warning-color":        "#faad14",                     // warning state color

@@ -45,7 +45,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(9, 112, 116);
+  background-color: #FF5722;
   color: white;
   
 }
@@ -63,6 +63,11 @@
 .nav-logo{
   font-size: 25px;
   color: whitesmoke;
+}
+
+.signup-envelop,
+.login-envelop{
+  padding: 2em;
 }
 
 .profile-picture{
@@ -226,17 +231,17 @@
   }
 }
 
-.dark-primary-color    { background: #AFB42B; }
-.default-primary-color { background: #CDDC39; }
-.light-primary-color   { background: #F0F4C3; }
+.dark-primary-color    { background: #E64A19; }
+.default-primary-color { background: #FF5722; }
+.light-primary-color   { background: #FFCCBC; }
 .text-primary-color    { color: #212121; }
-.accent-color          { background: #FF4081; }
+.accent-color          { background: #CDDC39; }
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
 
 
-.primary-color        { color: #AFB42B; }                        
+.primary-color        { color: #FF5722; }                        
 .link-color           { color: #CDDC39; }                          
 .success-color        { color: #52c41a; }                      
 .warning-color        { color: #faad14; }                     
@@ -247,5 +252,5 @@
 .text-color-secondary { color: rgba(33, 33, 33, .45);}    
 .disabled-color       { color: rgba(33, 33, 33, .25);}         
 .border-radius-base   { border-radius: 4px;}     
-.border-color-base    { color: #d9d9d9;}     
+.border-color-base    { color: #BDBDBD;}     
 .box-shadow-base      { color: 0 2px 8px rgba(33, 33, 33, .15);}  
