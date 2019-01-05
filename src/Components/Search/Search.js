@@ -124,7 +124,6 @@ class NewSearch extends Component {
               <div className='cards-envelop'>
                 {items ? items.map((item, index) => <Item key={index} item={item}  handleAddList={this.handleAddList} />) : <Skeleton active/>}
               </div>
-              <p onClick={this.props.handleLogout}>Logout</p>
             </div>
           </Content>
           <Footer>
