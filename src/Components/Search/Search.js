@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
 import {searchProduct} from '../../service';
-//import {Link} from 'react-router-dom';
+import {addProduct} from '../../service';
 import Nav from '../Nav/Nav';
 import Item from './Item';
 
-import {Skeleton} from 'antd';
-import {Layout} from 'antd';
-import {Menu, Icon, Button } from 'antd';
-import {Input} from 'antd';
-import {Spin} from 'antd';
-import {BackTop} from 'antd';
+import {
+  Skeleton,
+  Layout,
+  Icon,
+  Input,
+  Spin,
+  BackTop,
+  Divider,
+  message
+} from 'antd';
 
 const {Header, Footer, Content} = Layout
-const SubMenu = Menu.SubMenu;
 const Search = Input.Search;
 
 class NewSearch extends Component {
@@ -27,31 +30,19 @@ class NewSearch extends Component {
     }
   }
 
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-
   componentWillMount(){
 
     const token = localStorage.getItem('token');
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
     if (localStorage.getItem('items') !== undefined){
-      console.log('Yes Items')
+      //console.log('Yes Items')
       const items = JSON.parse(localStorage.getItem('items'))
       items ? this.setState({items}) : console.log('No items found');  
     } else {
       console.log('No Items')
     }
-
     this.props.handleSetState()
-
-    //let {user} = this.props.state;
-    //user = JSON.parse(localStorage.getItem('user'))
-    ////user ? this.setState({user}) : this.props.history.push('/login');
-    //this.setState({user})
   }
 
   handleChange = (e) => {
@@ -59,6 +50,16 @@ class NewSearch extends Component {
     //let {items} = this.state;
     search.product = e.target.value;
     this.setState({search})
+  }
+
+  handleAddList = (item, e) => {
+    //console.log('Adding to list....', item)
+    item.userId = this.props.state.user._id
+    addProduct(item)
+      .then(res => {
+        //console.log('Add Item =====>', res.data.msg)
+        message.success(res.data.msg);
+      })
   }
   
   handleSearch = (value) => {
@@ -98,7 +99,7 @@ class NewSearch extends Component {
       <div>
         <Layout>
           <Header>
-            <Nav user={user} />
+            <Nav user={user} handleLogout={this.props.handleLogout} />
           </Header>
           <Content>
             <div className='home-envelop'>
@@ -109,8 +110,10 @@ class NewSearch extends Component {
                 />
               </div>
               {searching ? <Spin /> : null}
+              <Divider />
+              <p>Mi última búsqueda</p>
               <div className='cards-envelop'>
-                {items ? items.map((item, index) => <Item key={index} {...item} />) : <Skeleton active/>}
+                {items ? items.map((item, index) => <Item key={index} item={item}  handleAddList={this.handleAddList} />) : <Skeleton active/>}
               </div>
               <p onClick={this.props.handleLogout}>Logout</p>
             </div>
