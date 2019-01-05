@@ -21,8 +21,18 @@ class List extends Component {
     super();
     this.state = {
       walmart: [],
+      totalWalmart: 0,
       superama: [],
-      list: []
+      list: [],
+      table: {
+        bordered: false,
+        pagination: true,
+        size: 'small',
+        title: undefined,
+        showHeader: true,
+        scroll: undefined,
+        hasData: true,
+      }
     }
   }
 
@@ -39,13 +49,25 @@ class List extends Component {
         let list = res.data.list;
         let walmart = []
         let superama = []
+        let totalWalmart = 0;
+        let totalSuperama = 0;
 
         list.forEach(item => {
-          if(item.market === 'Walmart') walmart.push(item);
-          if(item.market === 'Superama') superama.push(item);        
+          if(item.market === 'Walmart'){
+            walmart.push(item);
+            totalWalmart += item.priceNum;
+          } 
+          if(item.market === 'Superama') {
+            superama.push(item);
+            totalSuperama += item.priceNum;
+          } 
         });
-              
-        this.setState({list, walmart, superama})
+
+        //let totalWalmart = walmart.reduce((acc, num) => acc + num.priceNum)
+        totalSuperama = totalSuperama.toFixed(2)
+        totalWalmart = totalWalmart.toFixed(2)
+
+        this.setState({list, walmart, superama, totalWalmart, totalSuperama})
         console.log('List from state =====>', this.state)
       })
       .catch((err) => {
@@ -58,30 +80,25 @@ class List extends Component {
 
   render() {
     const {user} = this.props.state;
+    const {totalWalmart, totalSuperama} = this.state
 
     const columns = [{
-      title: 'Super',
-      dataIndex: 'market',
-      filters: [{
-        text: 'Superama',
-        value: 'Superama',
-      }, {
-        text: 'Walmart',
-        value: 'Walmart',
-      }],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      onFilter: (value, record) => record.market.indexOf(value) === 0,
-      //sorter: (a, b) => a.name.length - b.name.length,
-    }, {
       title: 'Descripcion',
       dataIndex: 'name',
-      defaultSortOrder: 'descend',
-      sorter: (a, b) => a.name - b.name,
+      width: 300,
+      render: (text, record) => (
+        <span>
+          <img className='image-list' src={record.image} /> {record.name}
+        </span>
+      ),
+      //defaultSortOrder: 'ascendent',
+      //sorter: (a, b) => b.name - a.name,
     }, {
       title: 'Precio',
       dataIndex: 'price'
     }];
+
+
 
     return (
       <div>
@@ -90,10 +107,18 @@ class List extends Component {
             <Nav user={user} handleLogout={this.props.handleLogout} />
           </Header>
           <Content>
-            <div className='profile-data'>
+            <div className='list-data'>
             <h1>Mi lista</h1>
 
-            <Table columns={columns} dataSource={this.state.list} onChange={onChange} />
+            <div>
+              <p>Superama $ {totalSuperama}</p>
+              <Table {...this.state.table} columns={columns} dataSource={this.state.superama} onChange={this.onChange} />
+            </div>
+            <div>
+              <p>Walmart $ {totalWalmart}</p>
+              <Table {...this.state.table} columns={columns} dataSource={this.state.walmart} onChange={this.onChange} />
+            </div>
+
             
         </div>
           </Content>
