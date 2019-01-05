@@ -29,21 +29,21 @@ class LoginForm extends Component {
         </div>
         <FormItem>
           {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please type your email!' }],
+            rules: [{ required: true, message: 'Por favor ingresa tu email!' }],
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="user@compareit.com"/>
           )}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please type your Password!' }],
+            rules: [{ required: true, message: 'Ingresa tu contraseña!' }],
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Your password"/>
+              placeholder="Tu contraseña"/>
           )}
         </FormItem>
         <FormItem>
@@ -51,13 +51,13 @@ class LoginForm extends Component {
             valuePropName: 'checked',
             initialValue: true,
           })(
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox>Recuédame en este dispositivo</Checkbox>
           )}
-          <Link className="login-form-forgot" to='/forgot'>Forgot password</Link>
+          <Link className="login-form-forgot" to='/forgot'>Olvidé mi contraseña</Link>
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+            Iniciar sesión
           </Button>
-          Don't have an account yet? <Link to='/signup'>Register now!</Link>
+          ¿No tienes una cuenta aún? <Link to='/signup'>Registrate ahora!</Link>
         </FormItem>
       </Form>
     );
