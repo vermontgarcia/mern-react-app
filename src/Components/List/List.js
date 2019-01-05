@@ -9,6 +9,7 @@ import {
   BackTop,
   Table
 } from 'antd';
+import FooterData from '../Common/FooterData';
 
 const {Header, Footer, Content} = Layout
 
@@ -91,8 +92,6 @@ class List extends Component {
           <img className='image-list' src={record.image} /> {record.name}
         </span>
       ),
-      //defaultSortOrder: 'ascendent',
-      //sorter: (a, b) => b.name - a.name,
     }, {
       title: 'Precio',
       dataIndex: 'price'
@@ -108,21 +107,25 @@ class List extends Component {
           </Header>
           <Content>
             <div className='list-data'>
-            <h1>Mi lista</h1>
 
-            <div>
-              <p className='total-list'>Superama ${totalSuperama}</p>
-              <Table {...this.state.table} columns={columns} dataSource={this.state.superama} onChange={this.onChange} />
-            </div>
-            <div>
-              <p className='total-list'>Walmart ${totalWalmart}</p>
-              <Table {...this.state.table} columns={columns} dataSource={this.state.walmart} onChange={this.onChange} />
+              <div>
+                <div>
+                  <h1>Mi lista</h1>
+                </div>
+                <p className='total-list'>Superama ${totalSuperama}</p>
+                <Table {...this.state.table} columns={columns} dataSource={this.state.superama} onChange={this.onChange} />
+              </div>
+              <div>
+                <p className='total-list'>Walmart ${totalWalmart}</p>
+                <Table {...this.state.table} columns={columns} dataSource={this.state.walmart} onChange={this.onChange} />
             </div>
 
             
         </div>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <FooterData />
+          </Footer>
         </Layout>
         <div>
           <BackTop id='back-top-custom'>

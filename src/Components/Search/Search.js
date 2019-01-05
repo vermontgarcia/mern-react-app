@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
 import {searchProduct} from '../../service';
 import {addProduct} from '../../service';
+import FooterData from '../Common/FooterData';
 import Nav from '../Nav/Nav';
 import Item from './Item';
 
@@ -118,7 +119,9 @@ class NewSearch extends Component {
               <p onClick={this.props.handleLogout}>Logout</p>
             </div>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <FooterData />
+          </Footer>
         </Layout>
         <div>
           <BackTop id='back-top-custom'>
