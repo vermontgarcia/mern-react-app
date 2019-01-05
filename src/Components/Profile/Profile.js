@@ -37,7 +37,7 @@ class Profile extends Component {
     //console.log("user",user)
     return(
       <div>
-        <Nav user={user}/>
+        <Nav user={user} handleLogout={this.props.handleLogout} />
         <div>
           <h1 onClick={this.handleEdit}>Mi perfil</h1>
           {edit ? <h2>Edit</h2>:null}
