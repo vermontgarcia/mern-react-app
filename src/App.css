@@ -2,25 +2,6 @@
   text-align: center;
 }
 
-/*
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-*/
-
 .mouseHover:hover{
   cursor: pointer;
   color: white;
@@ -33,12 +14,6 @@
 }
 
 .nav{
-  /*
-  position: fixed;
-  
-  top: 0;
-  
-  */
   width: 100%;
   padding: 10px;
   display: flex;
@@ -47,7 +22,6 @@
   align-items: center;
   background-color: #FF5722;
   color: white;
-  
 }
 
 .nav a{
@@ -230,27 +204,3 @@
     transform: rotate(360deg);
   }
 }
-
-.dark-primary-color    { background: #E64A19; }
-.default-primary-color { background: #FF5722; }
-.light-primary-color   { background: #FFCCBC; }
-.text-primary-color    { color: #212121; }
-.accent-color          { background: #CDDC39; }
-.primary-text-color    { color: #212121; }
-.secondary-text-color  { color: #757575; }
-.divider-color         { border-color: #BDBDBD; }
-
-
-.primary-color        { color: #FF5722; }                        
-.link-color           { color: #CDDC39; }                          
-.success-color        { color: #52c41a; }                      
-.warning-color        { color: #faad14; }                     
-.error-color          { color: #f5222d; }                      
-.font-size-base       { color: 14px;}                 
-.heading-color        { color: rgba(33, 33, 33, .85);}              
-.text-color           { color: rgba(33, 33, 33, .65);}                
-.text-color-secondary { color: rgba(33, 33, 33, .45);}    
-.disabled-color       { color: rgba(33, 33, 33, .25);}         
-.border-radius-base   { border-radius: 4px;}     
-.border-color-base    { color: #BDBDBD;}     
-.box-shadow-base      { color: 0 2px 8px rgba(33, 33, 33, .15);}  

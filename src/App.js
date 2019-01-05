@@ -5,7 +5,6 @@ import {login} from './authService';
 import {logout} from './authService';
 import {signup} from './authService';
 import './App.css';
-//import Nav from './Components/Nav/Nav';
 
 class App extends Component {
 
@@ -18,15 +17,11 @@ class App extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    //console.log('Logging in.....')
-    //console.log(this.state.user);
     login(this.state.user, this.props.history)
   }
   
   handleSignup = (e) => {
     e.preventDefault();
-    console.log('Signing up.....')
-    //console.log(this.state.user);
     signup(this.state.user, this.props.history)
   }
 
@@ -53,20 +48,11 @@ class App extends Component {
   componentWillMount(){
     const user = JSON.parse(localStorage.getItem('user'))
     user ? this.setState({user}) : this.props.history.push('/login');
-    //user != null || user != undefined ? this.setState({user}) : this.props.history.push('/login');
   }
-
-
 
   render() {
     return (
       <div className="App">
-        {/*
-        <nav>
-            <button onClick={this.handleRedirect}>{this.state.user.loggedIn ? this.state.user.username: "login"}</button>
-        </nav>
-        <Nav />
-        */}
         <Router 
           state={this.state}
           handleLogin={this.handleLogin}

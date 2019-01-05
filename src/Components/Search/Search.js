@@ -38,7 +38,6 @@ class NewSearch extends Component {
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
     if (localStorage.getItem('items') !== undefined){
-      //console.log('Yes Items')
       const items = JSON.parse(localStorage.getItem('items'))
       items ? this.setState({items}) : console.log('No items found');  
     } else {
@@ -49,17 +48,14 @@ class NewSearch extends Component {
 
   handleChange = (e) => {
     const {search} = this.state;
-    //let {items} = this.state;
     search.product = e.target.value;
     this.setState({search})
   }
 
   handleAddList = (item, e) => {
-    //console.log('Adding to list....', item)
     item.userId = this.props.state.user._id
     addProduct(item)
       .then(res => {
-        //console.log('Add Item =====>', res.data.msg)
         message.success(res.data.msg);
       })
   }
@@ -74,7 +70,6 @@ class NewSearch extends Component {
     let {items} = this.state;
     searchProduct(search)
       .then(res => {
-        console.log('Search Data =====>', res.data.msg)
         items = res.data.items;
         localStorage.setItem('items', JSON.stringify(items));
         this.setState({items})
@@ -83,27 +78,19 @@ class NewSearch extends Component {
           search: value,
           items: items
         }
-        console.log('Searches ', search)
         addSearch(search)
         searching = false;
         this.setState({searching});
-        console.log('Items from state =====>', this.state.items)
       })
       .catch((err) => {
-        //console.log('Error Signup =====> ', err.response);
         err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
       });
-    //console.log('Items =====> ', items)
-    //this.setState({items})
-
   }
 
   render(){
-    //console.log(this.props);
     let {searching} = this.state;
     const {user} = this.props.state;
     const {items} = this.state;
-    console.log('Items initial', items)
     return (
       <div>
         <Layout>

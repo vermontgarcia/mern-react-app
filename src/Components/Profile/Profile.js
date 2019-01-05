@@ -4,7 +4,7 @@ import {editUser} from '../../authService'
 import ProfileField from './ProfileField';
 import FooterData from '../Common/FooterData';
 import Nav from '../Nav/Nav';
-import {Button, Spin, Layout, Icon, BackTop} from 'antd';
+import {Spin, Layout, Icon, BackTop} from 'antd';
 
 const {Header, Footer, Content} = Layout
 
@@ -18,7 +18,6 @@ class Profile extends Component {
       user: {}
     }
   }
-
 
   handleEdit = () => {
     this.setState({
@@ -34,7 +33,6 @@ class Profile extends Component {
     let field = e.target.name;
     user[field] = e.target.files ? e.target.files[0] : e.target.value;
     this.setState({user})
-    //console.log(this.state.user);
     editUser(user)
       .then(res => {
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -51,7 +49,6 @@ class Profile extends Component {
   componentWillMount(){
 
     const token = localStorage.getItem('token');
-
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login')
 
     this.props.handleSetState()
@@ -59,11 +56,9 @@ class Profile extends Component {
   }
 
   render(){
-    //console.log(this.props)
     const {user} = this.props.state
     const {edit} = this.state
     let {searching} = this.state;
-    //console.log("user",user)
     return(
       <div>
         <Layout>

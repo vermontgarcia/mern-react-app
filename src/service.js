@@ -1,11 +1,7 @@
 import axios from 'axios';
 
 
-//const base_url = 'http://localhost:3500/api';
-
-
 const base_url = window.location.hostname === 'localhost' ? 'http://localhost:3500/api' : 'https://compare-it-mern.herokuapp.com/api';
-
 
 export const searchProduct = (search) => {
   console.log('Service =====>', search)

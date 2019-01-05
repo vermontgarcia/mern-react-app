@@ -28,7 +28,6 @@ class Nav extends Component {
   };
 
   render(){
-    console.log('Props =====>', this.props)
     const {user} = this.props
     return (
       <nav className='nav'>
@@ -46,7 +45,6 @@ class Nav extends Component {
           {user ? <NavLink to='/profile'><Avatar src={user.profilePicture === 'avatar' ? '/avatar.png' : user.profilePicture} /></NavLink> : null}
         </div>
         <Drawer
-          //title="Basic Drawer"
           placement={this.state.placement}
           closable={false}
           onClose={this.onClose}

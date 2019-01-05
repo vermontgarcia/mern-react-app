@@ -25,7 +25,7 @@ class LoginForm extends Component {
     return (
       <div className='login-envelop'>
         <div>
-          <img src='/search.png'/>
+          <img src='/search.png' alt='logo'/>
         </div>
         <div>
           <Form onSubmit={this.handleSubmit} className="form-envelop">

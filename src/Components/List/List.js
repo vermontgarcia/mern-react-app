@@ -13,10 +13,6 @@ import FooterData from '../Common/FooterData';
 
 const {Header, Footer, Content} = Layout
 
-function onChange(pagination, filters, sorter) {
-  console.log('params', pagination, filters, sorter);
-}
-
 class List extends Component {
   constructor(){
     super();
@@ -64,20 +60,15 @@ class List extends Component {
           } 
         });
 
-        //let totalWalmart = walmart.reduce((acc, num) => acc + num.priceNum)
         totalSuperama = totalSuperama.toFixed(2)
         totalWalmart = totalWalmart.toFixed(2)
 
         this.setState({list, walmart, superama, totalWalmart, totalSuperama})
-        console.log('List from state =====>', this.state)
       })
       .catch((err) => {
-        console.log('Get List Error =====> ', err.response);
         err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
       });
   }
-
-  
 
   render() {
     const {user} = this.props.state;
@@ -89,15 +80,13 @@ class List extends Component {
       width: 300,
       render: (text, record) => (
         <span>
-          <img className='image-list' src={record.image} /> {record.name}
+          <img className='image-list' src={record.image} alt='product' /> {record.name}
         </span>
       ),
     }, {
       title: 'Precio',
       dataIndex: 'price'
     }];
-
-
 
     return (
       <div>
@@ -119,8 +108,6 @@ class List extends Component {
                 <p className='total-list'>Walmart ${totalWalmart}</p>
                 <Table {...this.state.table} columns={columns} dataSource={this.state.walmart} onChange={this.onChange} />
             </div>
-
-            
         </div>
           </Content>
           <Footer>
@@ -133,7 +120,6 @@ class List extends Component {
           </BackTop>
         </div>
       </div>
-        
     );
   }
 }

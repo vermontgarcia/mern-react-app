@@ -18,15 +18,11 @@ class Home extends Component {
     token ? isLoggedIn(this.props.history) : this.props.history.push('/login');
 
     if (localStorage.getItem('items') !== undefined){
-      console.log('Yes Items')
       const items = JSON.parse(localStorage.getItem('items'))
       items ? this.setState({items}) : console.log('No items found');  
     } else {
-      console.log('No Items')
     }
-
     this.props.handleSetState()
-
   }
 
   render() {

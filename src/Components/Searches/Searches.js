@@ -24,11 +24,9 @@ class Searches extends Component {
   }
 
   handleAddList = (item, e) => {
-    //console.log('Adding to list....', item)
     item.userId = this.props.state.user._id
     addProduct(item)
       .then(res => {
-        //console.log('Add Item =====>', res.data.msg)
         message.success(res.data.msg);
       })
   }
@@ -42,14 +40,10 @@ class Searches extends Component {
 
     getMySearches(this.props.state.user._id)
       .then(res => {
-        console.log('Searches Data =====>', res.data.msg)
         let searches = res.data.searches;
-
         this.setState({searches})
-        console.log('Searches from state =====>', this.state)
       })
       .catch((err) => {
-        console.log('Get Searches Error =====> ', err.response);
         err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
       });
   }
@@ -66,7 +60,6 @@ class Searches extends Component {
           <Content>
             <div className='searches-envelop'>
             <h1>Mis Búsquedas</h1>
-
             <Collapse accordion>
               {
                 searches.map((search, index) => (
@@ -75,7 +68,6 @@ class Searches extends Component {
                   </Panel>
                 ))
               } 
-
             </Collapse>
             
         </div>

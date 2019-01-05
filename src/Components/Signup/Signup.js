@@ -21,7 +21,6 @@ class SignupForm extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         signup(values, this.props.history)
       }
     });
@@ -55,7 +54,7 @@ class SignupForm extends Component {
     return(
       <div className='signup-envelop'>
         <div>
-          <img src='/search.png'/>
+          <img src='/search.png' alt='logo'/>
         </div>
         <div>
           <Form onSubmit={this.handleSubmit}>
