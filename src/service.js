@@ -11,16 +11,14 @@ export const searchProduct = (search) => {
   console.log('Service =====>', search)
   console.log('URL =====> ', base_url);
   return axios.get(`${base_url}/search/${search.product}`)
-    /*
-    .then(res => {
-      console.log('Search Data =====>', res.data.msg)
-      //alert(res.data.msg);
-      //console.log(res)
-      //history.push('/')
-    })
-    .catch((err) => {
-      //console.log('Error Signup =====> ', err.response);
-      err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
-    })
-    */
+}
+
+export const addProduct = (item) => {
+  console.log('Service =====>', item)
+  return axios.post(`${base_url}/items`, item)
+}
+
+export const getMyList = (id) => {
+  console.log('Service =====>', id)
+  return axios.get(`${base_url}/items/${id}`)
 }
