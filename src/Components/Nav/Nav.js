@@ -27,8 +27,8 @@ class Nav extends Component {
     });
   };
 
-
   render(){
+    console.log('Props =====>', this.props)
     const {user} = this.props
     return (
       <nav className='nav'>
@@ -62,7 +62,7 @@ class Nav extends Component {
           <div><Link to='/profile' ><Icon type="user" /> Mi Perfil</Link></div>
           <div><Link to='/settings' ><Icon type="setting" /> Ajustes</Link></div>
           <Divider />
-          <div><Link to='/' ><Icon type="logout" /> Cerrar Sesión</Link></div>
+          <div onClick={this.props.handleLogout} ><Link to=''><Icon type="logout" /> Cerrar Sesión</Link></div>
         </Drawer>
       </nav>
     )
