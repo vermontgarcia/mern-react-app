@@ -35,7 +35,7 @@ class SignupForm extends Component {
   compareToFirstPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-      callback('The password is not the same!');
+      callback('¡La contraseña no coincide!');
     } else {
       callback();
     }
@@ -60,20 +60,20 @@ class SignupForm extends Component {
 
         <FormItem>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+            rules: [{ required: true, message: 'Por favor ingresa tu nombre!', whitespace: true }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder='What is your name'/>
+              placeholder='¿Cual es tu nombre?'/>
           )}
         </FormItem>
 
         <FormItem>
           {getFieldDecorator('email', {
             rules: [{
-              type: 'email', message: 'Please enter a valid email!',
+              type: 'email', message: '¡Ingresa un email valido!',
             }, {
-              required: true, message: 'Please enter your email!',
+              required: true, message: 'Ingresa tu email!',
             }],
           })(
             <Input
@@ -85,7 +85,7 @@ class SignupForm extends Component {
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{
-              required: true, message: 'Please enter your Password!',
+              required: true, message: '¡Por favor ingresa tu contraseña!',
             },{
               validator: this.validateToNextPassword,
             }],
@@ -93,14 +93,14 @@ class SignupForm extends Component {
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Your password"/>
+              placeholder="Tu contraseña"/>
           )}
         </FormItem>
 
         <FormItem>
           {getFieldDecorator('confirm', {
             rules: [{
-              required: true, message: 'Please confirm your Password!',
+              required: true, message: '¡Por favor, confirma tu contraseña!',
             },{
               validator: this.compareToFirstPassword,
             }],
@@ -108,7 +108,7 @@ class SignupForm extends Component {
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Confirm password"/>
+              placeholder="¡Confirma tu contraseña"/>
           )}
         </FormItem>
 
@@ -116,12 +116,12 @@ class SignupForm extends Component {
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
-            <Checkbox>I have read the <Link to='/agreement'>agreement</Link></Checkbox>
+            <Checkbox>He leido el <Link to='/agreement'>acuerdo</Link></Checkbox>
             )}
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Register
+              Registrar
             </Button>
-            Already have an account? <Link to='/login' >Log in</Link>
+            Ya tienes una cuenta? <Link to='/login' >Inicia sesión</Link>
         </FormItem>
 
       </Form>
