@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
+import {getMySearches} from '../../service';
 import Nav from '../Nav/Nav';
+import FooterData from '../Common/FooterData';
 
 import {Layout} from 'antd';
 import {Icon} from 'antd';
@@ -12,8 +14,6 @@ class Searches extends Component {
   constructor(){
     super();
     this.state = {
-      walmart: [],
-      superama: [],
       searches: []
     }
   }
@@ -25,6 +25,18 @@ class Searches extends Component {
 
     this.props.handleSetState()
 
+    getMySearches(this.props.state.user._id)
+      .then(res => {
+        console.log('Searches Data =====>', res.data.msg)
+        let searches = res.data.searches;
+
+        this.setState({searches})
+        console.log('Searches from state =====>', this.state)
+      })
+      .catch((err) => {
+        console.log('Get Searches Error =====> ', err.response);
+        err.response.data.msg ? alert(err.response.data.msg) : console.log('No message');
+      });
   }
 
   render() {
@@ -41,7 +53,9 @@ class Searches extends Component {
             
         </div>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <FooterData />
+          </Footer>
         </Layout>
         <div>
           <BackTop id='back-top-custom'>

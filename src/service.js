@@ -22,3 +22,8 @@ export const getMyList = (id) => {
   console.log('Service =====>', id)
   return axios.get(`${base_url}/items/${id}`)
 }
+
+export const getMySearches = (id) => {
+  console.log('Service =====>', id)
+  return axios.get(`${base_url}/items/log/${id}`)
+}
