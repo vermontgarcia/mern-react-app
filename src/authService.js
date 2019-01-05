@@ -49,12 +49,12 @@ export const logout = (history) => {
 }
 
 
-export const upload = (user) => {
+export const editUser = (user) => {
   let formData = new FormData();
   Object.keys(user).forEach(key => {
     formData.append(key, user[key])
   });
-  return axios.patch(`${base_url}/auth/upload`, formData)
+  return axios.patch(`${base_url}/auth/edit`, formData)
 }
 
 export const isLoggedIn = (history) => {
