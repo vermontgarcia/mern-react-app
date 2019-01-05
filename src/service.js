@@ -18,6 +18,11 @@ export const addProduct = (item) => {
   return axios.post(`${base_url}/items`, item)
 }
 
+export const addSearch = (search) => {
+  console.log('Service =====>', search)
+  return axios.post(`${base_url}/items/log`, search)
+}
+
 export const getMyList = (id) => {
   console.log('Service =====>', id)
   return axios.get(`${base_url}/items/${id}`)

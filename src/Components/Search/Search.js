@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {isLoggedIn} from '../../authService';
 import {searchProduct} from '../../service';
 import {addProduct} from '../../service';
+import {addSearch} from '../../service';
 import FooterData from '../Common/FooterData';
 import Nav from '../Nav/Nav';
 import Item from './Item';
@@ -77,6 +78,13 @@ class NewSearch extends Component {
         items = res.data.items;
         localStorage.setItem('items', JSON.stringify(items));
         this.setState({items})
+        let search = {
+          userId:this.props.state.user._id,
+          search: value,
+          items: items
+        }
+        console.log('Searches ', search)
+        addSearch(search)
         searching = false;
         this.setState({searching});
         console.log('Items from state =====>', this.state.items)
