@@ -83,7 +83,7 @@ class List extends Component {
     const {totalWalmart, totalSuperama} = this.state
 
     const columns = [{
-      title: 'Descripcion',
+      title: 'Descripción',
       dataIndex: 'name',
       width: 300,
       render: (text, record) => (
